@@ -1,18 +1,18 @@
 "use client";
 
 const techBadges = [
-  { label: "Next.js",     bg: "#111111", color: "#ffffff", dot: "#FFFFFF" },
-  { label: "TypeScript",  bg: "#3178C6", color: "#ffffff", dot: "#93C5FD" },
-  { label: "Tailwind CSS",bg: "#0EA5E9", color: "#ffffff", dot: "#BAE6FD" },
-  { label: "Solana",      bg: "#9333EA", color: "#ffffff", dot: "#D8B4FE" },
-  { label: "Rust",        bg: "#B91C1C", color: "#ffffff", dot: "#FCA5A5" },
-  { label: "Node.js",     bg: "#15803D", color: "#ffffff", dot: "#86EFAC" },
-  { label: "PostgreSQL",  bg: "#1D4ED8", color: "#ffffff", dot: "#93C5FD" },
-  { label: "Go",          bg: "#0369A1", color: "#ffffff", dot: "#7DD3FC" },
-  { label: "Docker",      bg: "#1E40AF", color: "#ffffff", dot: "#93C5FD" },
-  { label: "GraphQL",     bg: "#BE185D", color: "#ffffff", dot: "#F9A8D4" },
-  { label: "Prisma",      bg: "#0F172A", color: "#ffffff", dot: "#94A3B8" },
-  { label: "Redis",       bg: "#DC2626", color: "#ffffff", dot: "#FCA5A5" },
+  { label: "Next.js",     bg: "#111111", color: "#ffffff", icon: "nextdotjs" },
+  { label: "TypeScript",  bg: "#3178C6", color: "#ffffff", icon: "typescript" },
+  { label: "Tailwind CSS",bg: "#0EA5E9", color: "#ffffff", icon: "tailwindcss" },
+  { label: "Solana",      bg: "#9333EA", color: "#ffffff", icon: "solana" },
+  { label: "Rust",        bg: "#B91C1C", color: "#ffffff", icon: "rust" },
+  { label: "Node.js",     bg: "#15803D", color: "#ffffff", icon: "nodedotjs" },
+  { label: "PostgreSQL",  bg: "#1D4ED8", color: "#ffffff", icon: "postgresql" },
+  { label: "Go",          bg: "#0369A1", color: "#ffffff", icon: "go" },
+  { label: "Docker",      bg: "#1E40AF", color: "#ffffff", icon: "docker" },
+  { label: "GraphQL",     bg: "#BE185D", color: "#ffffff", icon: "graphql" },
+  { label: "Prisma",      bg: "#0F172A", color: "#ffffff", icon: "prisma" },
+  { label: "Redis",       bg: "#DC2626", color: "#ffffff", icon: "redis" },
 ];
 
 const industryBadges = [
@@ -32,7 +32,7 @@ interface TechBadge {
   label: string;
   bg: string;
   color: string;
-  dot: string;
+  icon: string;
 }
 interface IndustryBadge {
   label: string;
@@ -44,12 +44,16 @@ interface IndustryBadge {
 function TechBadgeItem({ badge }: { badge: TechBadge }) {
   return (
     <span
-      className="inline-flex items-center gap-2 mx-3 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap select-none"
+      className="inline-flex items-center gap-2.5 mx-3 rounded-full px-5 py-2.5 text-sm font-semibold whitespace-nowrap select-none"
       style={{ backgroundColor: badge.bg, color: badge.color }}
     >
-      <span
-        className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
-        style={{ backgroundColor: badge.dot }}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`https://cdn.simpleicons.org/${badge.icon}/ffffff`}
+        alt=""
+        width={16}
+        height={16}
+        className="w-4 h-4 object-contain flex-shrink-0"
         aria-hidden="true"
       />
       {badge.label}
