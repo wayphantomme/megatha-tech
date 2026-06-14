@@ -1,32 +1,27 @@
-import Image from "next/image";
-
 const services = [
   {
-    id: "fullstack",
-    icon: "https://placehold.co/100x100/F3F4F6/111111?text=FS",
-    title: "High-performance apps that scale without crashing",
+    id: "ai",
+    badge: "AI Automation",
+    title: "Automate Business 24/7 without You",
     description:
-      "We build fast, secure frontends and backends that handle sudden traffic spikes. Clean code, zero downtime, and robust performance under load.",
-    tags: ["Next.js", "React Native", "Node.js", "PostgreSQL"],
-    accent: "#F8FAFC",
+      "We automate your operations so you stop doing tasks manually and start scaling. One connected system. Zero downtime.",
+    tags: ["n8n", "OpenAI", "Claude", "Gemini", "WhatsApp", "Airtable"],
+  },
+  {
+    id: "fullstack",
+    badge: "Full Stack",
+    title: "Software That Grows With Your Business",
+    description:
+      "We build products that work under real pressure. Fast, clean, and ready to scale from day one.",
+    tags: ["Next.js", "React Native", "Node.js", "PostgreSQL", "Cloud Infrastructure", "API"],
   },
   {
     id: "web3",
-    icon: "https://placehold.co/100x100/F0EBFF/6D28D9?text=W3",
-    title: "Secure Web3 infrastructure engineered for transaction volume",
+    badge: "Web3",
+    title: "Blockchain Infrastructure Users Can Trust",
     description:
-      "From audited smart contracts to high-throughput dApp backends. We deploy robust protocol architectures that protect user assets and scale cleanly.",
-    tags: ["Solana", "Rust", "Anchor", "EVM", "Smart Contracts"],
-    accent: "#FAF5FF",
-  },
-  {
-    id: "ai",
-    icon: "https://placehold.co/100x100/ECFDF5/065F46?text=AI",
-    title: "AI agents that automate work and cut overhead",
-    description:
-      "Custom LLM integrations and automated workflows designed to handle manual operations, reduce error rates, and scale your operations without increasing headcount.",
-    tags: ["LLM APIs", "LangChain", "Automation", "RAG", "Vector DBs"],
-    accent: "#F0FDF4",
+      "Secure smart contracts and scalable backends built for real transaction volume. Built to last, not just to launch.",
+    tags: ["Smart Contracts", "Solana", "Rust", "Anchor", "EVM", "Web3 APIs"],
   },
 ];
 
@@ -42,24 +37,29 @@ export default function CapabilitiesSection() {
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-              Our Capabilities
+              our services
             </p>
             <h2
               id="services-heading"
               className="text-4xl md:text-5xl font-bold text-[#111111] tracking-tight max-w-lg leading-tight"
               style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}
             >
-              Three Disciplines.
-              <br />
-              One Elite Team.
+              Automate. Build. Scale.
             </h2>
+            <p className="mt-4 text-sm text-slate-500 leading-relaxed max-w-md">
+              We build systems that reduce manual work, increase efficiency, and unlock new revenue streams. Powered by modern engineering, AI automation, and scalable infrastructure.
+            </p>
           </div>
           <a
             href="#contact"
-            className="self-start md:self-auto rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-[#111111]
+            className="self-start md:self-auto flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-[#111111]
                        transition-all duration-300 hover:border-slate-400 hover:shadow-md whitespace-nowrap"
           >
-            Discuss your project →
+            <span>Make for You</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
           </a>
         </div>
 
@@ -71,16 +71,17 @@ export default function CapabilitiesSection() {
               id={`service-${service.id}`}
               className="card-hover group flex flex-col rounded-[var(--radius-card)] bg-white p-8 border border-slate-100"
             >
-              {/* Icon */}
+              {/* Pill Badge */}
               <div className="mb-6">
-                <Image
-                  src={service.icon}
-                  alt=""
-                  width={56}
-                  height={56}
-                  className="rounded-[var(--radius-icon)] object-cover"
-                  aria-hidden="true"
-                />
+                <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 border border-slate-200 shadow-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="uppercase tracking-wider">
+                    {service.badge}
+                  </span>
+                </div>
               </div>
 
               {/* Title */}
@@ -107,9 +108,12 @@ export default function CapabilitiesSection() {
 
               {/* Hover CTA */}
               <div className="mt-6 pt-6 border-t border-slate-100">
-                <span className="text-xs font-semibold text-slate-400 group-hover:text-[#111111] transition-colors duration-200">
-                  Learn more →
-                </span>
+                <a
+                  href="#contact"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 py-2 text-xs font-semibold text-slate-600 transition-all duration-300 group-hover:bg-[#111111] group-hover:text-white group-hover:border-[#111111]"
+                >
+                  Consult for Free →
+                </a>
               </div>
             </div>
           ))}

@@ -3,39 +3,75 @@ import Image from "next/image";
 const galleryItems = [
   {
     id: "project-1",
-    image: "https://placehold.co/600x600/18181b/a1a1aa?text=Enterprise+SaaS",
-    title: "Quantum Platform",
-    category: "Cloud Operations",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781441589/apple-developer-academy_ms2iiz.jpg",
+    title: "Apple Developer Academy",
+    category: "Education",
   },
   {
     id: "project-2",
-    image: "https://placehold.co/600x600/0f172a/94a3b8?text=DeFi+Dashboard",
-    title: "Apex Protocol",
-    category: "Decentralized Finance",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781441581/startup-village_qaxvkp.jpg",
+    title: "Startup Village",
+    category: "Event",
   },
   {
     id: "project-3",
-    image: "https://placehold.co/600x600/022c22/34d399?text=AI+Orchestrator",
-    title: "NeuralFlow Engine",
-    category: "Artificial Intelligence",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781441579/cursor-hackathon_gblcd7.jpg",
+    title: "Cursor Hackathon",
+    category: "Hackathon",
   },
   {
     id: "project-4",
-    image: "https://placehold.co/600x600/311042/e879f9?text=E-Commerce+API",
-    title: "Nova Cart",
-    category: "Headless Commerce",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781441353/Superteam-Singapore_d4cadr.jpg",
+    title: "Superteam Singapore",
+    category: "Community",
   },
   {
     id: "project-5",
-    image: "https://placehold.co/600x600/172554/60a5fa?text=Analytics+Suite",
-    title: "Pulse Analytics",
-    category: "Real-time Metrics",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781441351/Superteam-ID_sixibw.jpg",
+    title: "Superteam ID",
+    category: "Community",
   },
   {
     id: "project-6",
-    image: "https://placehold.co/600x600/450a0a/f87171?text=Mobile+App",
-    title: "SwiftPay",
-    category: "Fintech Mobile",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440980/lisk-winner_gtpvlt.jpg",
+    title: "Lisk Winner",
+    category: "Hackathon",
+  },
+  {
+    id: "project-7",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440979/bali-blockchain-summit_eqgftm.jpg",
+    title: "Bali Blockchain Summit",
+    category: "Conference",
+  },
+  {
+    id: "project-8",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440976/lisk-villa_ci2j7a.jpg",
+    title: "Builders Retreat",
+    category: "Event",
+  },
+  {
+    id: "project-9",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440975/minutes-of-manager_v3i0vg.jpg",
+    title: "Minutes of Manager",
+    category: "Community",
+  },
+  {
+    id: "project-10",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440974/lisk-builders-sea_jzhxjc.jpg",
+    title: "Lisk Builders SEA",
+    category: "Community",
+  },
+  {
+    id: "project-11",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440637/Lisk_Spark_Incubator_enazn5.png",
+    title: "Lisk Spark Incubator",
+    category: "Incubator",
+  },
+  {
+    id: "project-12",
+    image: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781440632/Bali_Capital_Circle_kauwtc.png",
+    title: "Bali Capital Circle",
+    category: "Event",
   },
 ];
 
@@ -66,10 +102,10 @@ export default function PortfolioSection() {
             className="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight"
             style={{ fontFamily: "var(--font-plus-jakarta), sans-serif" }}
           >
-            Our Gallery of Excellence
+            Our Gallery of Activities
           </h2>
           <p className="mt-4 text-slate-400 max-w-xl mx-auto text-base">
-            Hover over the projects to explore their details and see the interactive animations.
+            A visual journey through the dynamic hackathons, immersive summits, and builder communities that define our global impact.
           </p>
         </div>
 
@@ -78,7 +114,7 @@ export default function PortfolioSection() {
           {galleryItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-[var(--radius-card)] border border-white/[0.08] bg-neutral-900 aspect-square cursor-pointer"
+              className="antigravity-card group relative overflow-hidden rounded-[var(--radius-card)] border border-white/[0.08] bg-neutral-900 aspect-square cursor-pointer"
             >
               {/* Image */}
               <div className="w-full h-full relative">

@@ -128,4 +128,19 @@ body {
     filter: blur(80px);
     pointer-events: none;
   }
+
+  /* 1. Initial State: The element is resting on the ground with a soft, tight shadow */
+  .antigravity-card {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* 2. Hover State: The Anti-Gravity lift-off */
+  .antigravity-card:hover {
+    /* Lifts the element upward by 20 pixels */
+    transform: translateY(-20px); 
+    
+    /* Expands and softens the shadow underneath to simulate high altitude */
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3); 
+  }
 }
