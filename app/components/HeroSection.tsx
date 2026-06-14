@@ -128,25 +128,33 @@ export default function HeroSection() {
         {/* ── Trust indicators ─────────────────────────────────────────── */}
         <div className="border-t border-slate-100 pt-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
-            Trusted by teams building
+            Trusted by teams at
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {[
-              { label: "Fintech",       w: 120, h: 36, bg: "F3F4F6", fg: "6B7280" },
-              { label: "Web3",          w: 100, h: 36, bg: "F3F4F6", fg: "6B7280" },
-              { label: "SaaS Startups", w: 140, h: 36, bg: "F3F4F6", fg: "6B7280" },
-              { label: "Enterprise",    w: 130, h: 36, bg: "F3F4F6", fg: "6B7280" },
-              { label: "AI Platforms",  w: 130, h: 36, bg: "F3F4F6", fg: "6B7280" },
+              { label: "GitHub", slug: "github" },
+              { label: "Vercel", slug: "vercel" },
+              { label: "Claude", slug: "anthropic" },
+              { label: "OpenAI", slug: "openai" },
+              { label: "n8n", slug: "n8n" },
             ].map((logo) => (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
+              <div
                 key={logo.label}
-                src={`https://placehold.co/${logo.w}x${logo.h}/${logo.bg}/${logo.fg}?text=${encodeURIComponent(logo.label)}`}
-                alt={logo.label}
-                width={logo.w}
-                height={logo.h}
-                className="rounded-lg opacity-60 hover:opacity-100 transition-opacity duration-200 grayscale"
-              />
+                className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 select-none grayscale hover:grayscale-0"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://cdn.simpleicons.org/${logo.slug}/1e293b`}
+                  alt=""
+                  width={18}
+                  height={18}
+                  className="w-4.5 h-4.5 object-contain"
+                  aria-hidden="true"
+                />
+                <span className="text-sm font-bold text-[#1e293b] tracking-tight">
+                  {logo.label}
+                </span>
+              </div>
             ))}
           </div>
         </div>
