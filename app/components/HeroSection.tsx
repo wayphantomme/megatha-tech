@@ -135,7 +135,7 @@ export default function HeroSection() {
               { label: "GitHub", slug: "github" },
               { label: "Vercel", slug: "vercel" },
               { label: "Claude", slug: "anthropic" },
-              { label: "OpenAI", slug: "openai" },
+              { label: "OpenAI", slug: "chatgpt" },
               { label: "n8n", slug: "n8n" },
             ].map((logo) => (
               <div
