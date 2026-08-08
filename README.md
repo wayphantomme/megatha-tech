@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Megatha Tech — Company Website
+
+Official website for **Megatha Tech**, a software house based in Bali, Indonesia. Built with Next.js 16, React 19, Tailwind CSS v4, and Framer Motion.
+
+Live: [megatha.tech](https://megatha.tech)
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animation:** Framer Motion
+- **Icons:** Lucide React
+- **Fonts:** Inter + Plus Jakarta Sans (Google Fonts)
+- **Images:** Cloudinary
+
+---
+
+## Features
+
+- **Bilingual (ID / EN)** — language toggle in header, all copy managed via `lib/i18n/`
+- **Dynamic announcement bar** — auto-updates month/year, no manual edits needed
+- **Showcase section** — 35+ app types across 6 categories, each with prefilled WhatsApp CTA
+- **Pricing section** — 4 tiers (Starter, Standard, Advanced, Enterprise) with per-tier WA/Calendly CTAs
+- **Process section** — horizontal 4-card stepper
+- **Client gallery** — masonry grid with show more/less
+- **PDF catalog** — downloadable service catalog in footer
+- **Floating WhatsApp button**
+
+---
+
+## Project Structure
+
+```
+app/
+├── components/          # All page sections
+│   ├── Header.tsx       # Sticky nav with lang toggle
+│   ├── HeroSection.tsx
+│   ├── TechMarquee.tsx
+│   ├── PainPointSection.tsx
+│   ├── CapabilitiesSection.tsx
+│   ├── ShowcaseSection.tsx
+│   ├── ClientsSection.tsx
+│   ├── ProcessSection.tsx
+│   ├── PricingSection.tsx
+│   ├── RiskReversalSection.tsx
+│   ├── Footer.tsx
+│   └── FloatingWhatsApp.tsx
+├── page.tsx             # Page layout / section order
+├── layout.tsx           # Root layout, fonts, metadata
+├── Providers.tsx        # LanguageProvider wrapper
+└── globals.css          # Design tokens, Tailwind utilities
+
+lib/
+├── LanguageContext.tsx  # Language state (ID/EN) + useLanguage hook
+└── i18n/
+    ├── types.ts         # Dict interface
+    ├── id.ts            # Indonesian copy
+    ├── en.ts            # English copy
+    └── index.ts         # Re-exports
+
+public/
+└── Megatha-Tech-Katalog-Layanan.pdf
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local`:
 
-## Learn More
+```env
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Adding / Updating Copy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All text content lives in `lib/i18n/id.ts` (Indonesian) and `lib/i18n/en.ts` (English). Edit the relevant key — no component changes needed for copy updates.
 
-## Deploy on Vercel
+The announcement bar month auto-updates via `new Date().toLocaleString()` — no manual edits required.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Recommended: [Vercel](https://vercel.com). Connect the repo and set environment variables in the Vercel dashboard.
+
+```bash
+npm run build   # verify build locally before deploying
+```
+
+---
+
+## Contact
+
+**Megatha Tech**
+- WhatsApp: [+62 896 8807 2039](https://wa.me/6289688072039)
+- Email: wayanphantomme@gmail.com
+- Instagram: [@megatha.tech](https://www.instagram.com/megatha.tech/)
+- LinkedIn: [megathatech](http://linkedin.com/company/megathatech/)
