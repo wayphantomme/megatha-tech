@@ -1,112 +1,111 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../lib/LanguageContext";
 
-const clientLogos = [
-  { 
-    id: 1, 
-    name: 'EduCLaaS Pte Ltd', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/educlaas_ofjonj.jpg' 
-  },
-  { 
-    id: 2, 
-    name: 'Mainstreet Global', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431583/mainstreet-global_pbdxab.jpg' 
-  },
-  { 
-    id: 3, 
-    name: 'Mainstreet Hospitality', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431583/mainstreet-hospitality_weixub.jpg' 
-  },
-  { 
-    id: 4, 
-    name: 'Brittco Consulting', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/brittco-consulting_nxnixx.jpg' 
-  },
-  { 
-    id: 5, 
-    name: 'Ken Gooz', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/ken-gooz_ie4ln3.jpg' 
-  },
-  { 
-    id: 6, 
-    name: 'Nara Land Property', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431585/nara-land_ls9euu.jpg' 
-  },
-  { 
-    id: 7, 
-    name: 'Nine Planets Coffee', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431584/nine-planets_bokcj5.jpg' 
-  },
-  { 
-    id: 8, 
-    name: 'Narie\'s Eatery & Coffee', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431584/naries_utcn8t.jpg' 
-  },
-  { 
-    id: 9, 
-    name: 'Global Property Innovation', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/global-property_mqurxv.jpg' 
-  },
-  { 
-    id: 10, 
-    name: 'DM Agency', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/dm-agency_c9ubjs.jpg' 
-  },
-  { 
-    id: 11, 
-    name: 'Devisa', 
-    srcUrl: 'https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/devisa_ptmq4g.jpg' 
-  },
+const clients = [
+  { id: 1,  name: "EduCLaaS Pte Ltd",          type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/educlaas_ofjonj.jpg" },
+  { id: 2,  name: "Mainstreet Global",           type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431583/mainstreet-global_pbdxab.jpg" },
+  { id: 3,  name: "Mainstreet Hospitality",      type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431583/mainstreet-hospitality_weixub.jpg" },
+  { id: 4,  name: "Brittco Consulting Group",    type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/brittco-consulting_nxnixx.jpg" },
+  { id: 5,  name: "Ken Gooz",                    type: "Portfolio Website",       srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/ken-gooz_ie4ln3.jpg" },
+  { id: 6,  name: "Nara Land Property",          type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431585/nara-land_ls9euu.jpg" },
+  { id: 7,  name: "Nine Planets Coffee",         type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431584/nine-planets_bokcj5.jpg" },
+  { id: 8,  name: "Narie's Eatery & Coffee",     type: "E-commerce Website",      srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431584/naries_utcn8t.jpg" },
+  { id: 9,  name: "Global Property Innovation",  type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/global-property_mqurxv.jpg" },
+  { id: 10, name: "DM Agency",                   type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/dm-agency_c9ubjs.jpg" },
+  { id: 11, name: "Devisa Global Services",      type: "Company Profile Website", srcUrl: "https://res.cloudinary.com/dwsapeq3m/image/upload/v1781431582/devisa_ptmq4g.jpg" },
 ];
 
-interface ClientLogoItem {
-  id: number;
-  name: string;
-  srcUrl: string;
-}
+const INITIAL_COUNT = 6;
 
-function ClientCard({ logo }: { logo: ClientLogoItem }) {
+export default function ClientsSection() {
+  const { t, lang } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
+
+  const visible = showAll ? clients : clients.slice(0, INITIAL_COUNT);
+  const remaining = clients.length - INITIAL_COUNT;
+
+  const showMoreLabel = lang === "id"
+    ? `Lihat ${remaining} proyek lainnya`
+    : `Show ${remaining} more projects`;
+  const showLessLabel = lang === "id" ? "Sembunyikan" : "Show less";
+
   return (
-    <div
-      className="relative flex-shrink-0 w-[55vw] md:w-[24.3vw] aspect-square rounded-[4vw] md:rounded-[1.38vw] p-[4vw] md:p-[1.38vw] flex flex-col items-start justify-between overflow-hidden box-border group"
+    <section
+      id="clients"
+      className="bg-white px-6 py-16 md:py-24"
+      aria-labelledby="clients-heading"
     >
-      <img
-        src={logo.srcUrl}
-        alt={logo.name}
-        className="absolute inset-0 w-full h-full object-cover -z-10"
-      />
-    </div>
-  );
-}
+      <div className="mx-auto max-w-7xl">
+        {/* Label */}
+        <p
+          id="clients-heading"
+          className="text-center text-xs font-bold text-slate-400 tracking-[0.2em] uppercase mb-12"
+        >
+          {t.clients.eyebrow}
+        </p>
 
-function MarqueeTrack() {
-  return (
-    <motion.div
-      className="flex gap-[4vw] md:gap-[2.77vw] shrink-0"
-      animate={{ x: ["0%", "-100%"] }}
-      transition={{ duration: 35, ease: "linear", repeat: Infinity }}
-    >
-      {clientLogos.map((logo, i) => (
-        <ClientCard key={`${logo.id}-${i}`} logo={logo} />
-      ))}
-    </motion.div>
-  );
-}
+        {/* Grid — 3 columns, landscape cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <AnimatePresence initial={false}>
+            {visible.map((client, i) => (
+              <motion.div
+                key={client.id}
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.35, delay: i < INITIAL_COUNT ? (i % 3) * 0.06 : 0 }}
+                className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50"
+              >
+                {/* Screenshot image */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={client.srcUrl}
+                  alt={client.name}
+                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
+                />
 
-export default function ClientsMarquee() {
-  return (
-    <div className="w-full pt-16 md:pt-24 pb-[8vw] md:pb-[4vw] overflow-hidden relative bg-white">
+                {/* Bottom label */}
+                <div className="px-4 py-3 flex items-center justify-between gap-2 border-t border-slate-100 bg-white">
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-[#111111] truncate">{client.name}</p>
+                    <p className="text-[10px] text-slate-400 truncate">{client.type}</p>
+                  </div>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/Megatha-Logo-Black.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-3.5 w-auto opacity-20 flex-shrink-0"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
-         <h4 className="text-center text-xs font-bold text-gray-400 tracking-widest uppercase mb-12">
-          PREVIOUS CLIENTS AND PROJECTS
-        </h4>
-
-      <div className="flex gap-[4vw] md:gap-[2.77vw] overflow-x-hidden w-full relative">
-        <MarqueeTrack />
-        <MarqueeTrack />
+        {/* Show more / less button */}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setShowAll((v) => !v)}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-all duration-200 hover:border-slate-400 hover:text-[#111111] hover:shadow-sm"
+          >
+            {showAll ? showLessLabel : showMoreLabel}
+            <motion.svg
+              animate={{ rotate: showAll ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </motion.svg>
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

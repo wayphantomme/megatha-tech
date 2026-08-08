@@ -33,13 +33,6 @@ const toolBadges = [
     icon: "n8n"
   },
   {
-    label: "Canva",
-    bgClass: "bg-violet-50/60",
-    textClass: "text-violet-800",
-    borderClass: "border-violet-200/50",
-    icon: "canva"
-  },
-  {
     label: "Figma",
     bgClass: "bg-rose-50/60",
     textClass: "text-rose-800",

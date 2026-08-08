@@ -2,12 +2,21 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../lib/LanguageContext";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const { t, toggle, lang } = useLanguage();
+
+  // Dynamic month label — auto-updates every month, no manual edits needed
+  const monthLabel = new Date().toLocaleString(lang === "id" ? "id-ID" : "en-US", {
+    month: "long",
+    year: "numeric",
+  });
+  const announcementText = t.announcement.text.replace("{month}", monthLabel);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -40,79 +49,105 @@ export default function Header() {
     return () => window.removeEventListener("click", handleOutsideClick);
   }, []);
 
-
-
   return (
-
     <header className="sticky top-0 w-full flex flex-col items-center z-100">
-
+      {/* ── Announcement bar (hides on scroll) ──────────────────────────── */}
       <motion.div
         className="w-full overflow-hidden bg-white"
         animate={{ maxHeight: scrolled ? 0 : 80, opacity: scrolled ? 0 : 1 }}
         initial={{ maxHeight: 80, opacity: 1 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        <a
-          className="block w-full no-underline"
-        >
+        <a className="block w-full no-underline">
           <div className="flex justify-center items-center w-full py-[3.5vw] sm:py-[1vw] px-[4vw] border-b border-[#e5e5e5] bg-white/80 backdrop-blur-[12px]">
             <p className="flex flex-col sm:flex-row items-center text-center gap-[1vw] sm:gap-[0.5vw] text-[3.5vw] sm:text-[0.97vw] text-[#a3a3a3] font-medium leading-tight sm:leading-none">
-              <span>Q3 2026 Development Slots Now Open.</span>
-
+              <span>{announcementText}</span>
               <strong className="font-extrabold text-black tracking-tight text-[3.5vw] sm:text-[0.97vw]">
-                Only 2 slots remaining for this quarter.
+                {t.announcement.highlight}
               </strong>
             </p>
           </div>
         </a>
       </motion.div>
 
+      {/* ── Nav pill ─────────────────────────────────────────────────────── */}
       <motion.nav
         animate={{ y: scrolled ? -8 : 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="flex justify-between items-center w-[92vw] sm:max-w-[55vw] px-[4vw] py-[2vw] sm:px-[1.5vw] sm:py-[0.8vw] bg-[#e5e5e580] rounded-[99px] backdrop-blur-[12px] relative border border-[#e5e5e5] mt-[6vw] sm:mt-[1.5vw]"
       >
+        {/* Logo */}
         <a href="/" className="flex items-center gap-[1.5vw] sm:gap-[0.6vw]">
           <img
             src="Megatha-Logo-Black.svg"
             alt="Megatha logo"
             width={394}
             height={117}
-            className="w-auto h-[5.5vw] sm:h-[1.5vw] min-h-[20px] "
+            className="w-auto h-[5.5vw] sm:h-[1.5vw] min-h-[20px]"
           />
           <div className="flex flex-col justify-center text-left leading-[0.9]">
             <span className="text-black font-bold tracking-tight text-[3.9vw] sm:text-[1.3vw] min-text-[10px]">
               Megatha Tech
             </span>
-
           </div>
         </a>
 
+        {/* Right actions */}
         <div className="flex items-center gap-[2vw] sm:gap-[0.8vw]">
+          {/* Language toggle — sliding pill */}
+          <button
+            onClick={toggle}
+            aria-label={`Switch language to ${lang === "id" ? "EN" : "ID"}`}
+            className="relative flex items-center gap-0 rounded-full border border-[#e5e5e5] bg-white p-1 select-none cursor-pointer"
+          >
+            {(["id", "en"] as const).map((l) => (
+              <span key={l} className="relative">
+                {lang === l && (
+                  <motion.span
+                    layoutId="lang-pill"
+                    className="absolute inset-0 rounded-full bg-black"
+                    transition={{ type: "spring", stiffness: 500, damping: 40 }}
+                  />
+                )}
+                <span
+                  className={`relative z-10 flex items-center justify-center w-8 h-7 sm:w-7 sm:h-6 text-[11px] sm:text-[10px] font-bold rounded-full transition-colors duration-100 ${
+                    lang === l ? "text-white" : "text-slate-400"
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </span>
+              </span>
+            ))}
+          </button>
+
+          {/* Book a Call — desktop only */}
           <a
             href="https://calendly.com/wayanphantomme/30min"
             className="hidden sm:flex items-center gap-[0.5vw] px-[1.2vw] py-[0.6vw] bg-black text-white text-[1vw] font-semibold rounded-[99px] transition-colors duration-300 hover:bg-white hover:text-black no-underline"
           >
-            Book a Call
+            {t.header.bookCall}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h10m0 0v10m0-10L7 17" />
             </svg>
           </a>
 
+          {/* Hamburger — mobile only */}
           <button
             ref={hamburgerRef}
             onClick={() => setMenuOpen((v) => !v)}
             className="flex sm:hidden border border-[#e5e5e5] rounded-[8px] cursor-pointer p-[1.5vw] bg-[#f5f5f5]"
+            aria-label="Open menu"
           >
             <img
               src="https://sody.app/_image?href=%2F_astro%2Fhamburger.Cx9jG_OA.svg&w=24&h=24&f=svg"
-              alt="hamburger"
+              alt=""
               width={24}
               height={24}
               className="w-[5vw] h-[5vw]"
             />
           </button>
 
+          {/* Mobile dropdown */}
           <AnimatePresence>
             {menuOpen && (
               <motion.div
@@ -123,6 +158,14 @@ export default function Header() {
                 transition={{ duration: 0.15 }}
                 className="absolute top-[calc(100%+5px)] right-0 bg-[#e5e5e5e6] backdrop-blur-[12px] border border-[#e5e5e5] rounded-[10px] z-[1] w-full p-[3vw] box-border flex flex-col gap-[2vw]"
               >
+                <div className="flex flex-row items-center justify-center gap-[2vw]">
+                  <a
+                    href="https://calendly.com/wayanphantomme/30min"
+                    className="flex flex-1 px-[4vw] py-[3vw] no-underline bg-black text-white justify-center items-center text-center rounded-[10px] text-[3.8vw] font-semibold border border-[#e5e5e5]"
+                  >
+                    {t.header.bookCall}
+                  </a>
+                </div>
                 <div className="flex flex-row items-center justify-center gap-[2vw]">
                   <a
                     href="https://www.instagram.com/megatha.tech/"
@@ -147,7 +190,6 @@ export default function Header() {
                     LinkedIn
                   </a>
                 </div>
-
               </motion.div>
             )}
           </AnimatePresence>

@@ -1,12 +1,12 @@
-import AnnouncementBar from "./components/AnnouncementBar";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import TechMarquee from "./components/TechMarquee";
 import PainPointSection from "./components/PainPointSection";
-import ClientsSection from "./components/ClientsSection";
 import CapabilitiesSection from "./components/CapabilitiesSection";
-import PortfolioSection from "./components/PortfolioSection";
+import ShowcaseSection from "./components/ShowcaseSection";
+import ClientsSection from "./components/ClientsSection";
 import ProcessSection from "./components/ProcessSection";
+import PricingSection from "./components/PricingSection";
 import RiskReversalSection from "./components/RiskReversalSection";
 import Footer from "./components/Footer";
 
@@ -19,9 +19,10 @@ export default function Home() {
         <TechMarquee />
         <PainPointSection />
         <CapabilitiesSection />
+        <ShowcaseSection />
         <ClientsSection />
-        <PortfolioSection />
         <ProcessSection />
+        <PricingSection />
         <RiskReversalSection />
       </main>
       <Footer />
