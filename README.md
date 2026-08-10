@@ -2,7 +2,7 @@
 
 Official website for **Megatha Tech**, a software house based in Bali, Indonesia. Built with Next.js 16, React 19, Tailwind CSS v4, and Framer Motion.
 
-Live: [megatha.tech](https://megatha.tech)
+Live: [megatha-tech.vercel.app](https://megatha-tech.vercel.app)
 
 ---
 
@@ -26,8 +26,21 @@ Live: [megatha.tech](https://megatha.tech)
 - **Pricing section** — 4 tiers (Starter, Standard, Advanced, Enterprise) with per-tier WA/Calendly CTAs
 - **Process section** — horizontal 4-card stepper
 - **Client gallery** — masonry grid with show more/less
-- **PDF catalog** — downloadable service catalog in footer
+- **PDF catalog** — downloadable service catalog in footer and services section
 - **Floating WhatsApp button**
+
+---
+
+## Analytics & Tracking
+
+| Service | ID / Tag | Status |
+|---|---|---|
+| Google Tag Manager | `GTM-TGVXDZRZ` | ✅ Active |
+| Google Analytics 4 | `G-G2DCXCXDCX` | ✅ Active |
+| Google Search Console | `NLaB6g1bAhwifsuvLJEXay6w568aZtoi5WiDPEk7KmA` | ✅ Verified |
+
+GTM and GA4 scripts are injected in `app/layout.tsx` via `next/script` with `strategy="afterInteractive"`.
+Search Console verification is handled via the `metadata.verification.google` field in the same file.
 
 ---
 
