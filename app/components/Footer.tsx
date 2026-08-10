@@ -62,7 +62,7 @@ export default function Footer() {
 
               {/* Socials */}
               <div className="flex items-center justify-between border-b border-white/[0.06] pb-6">
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{f.socialLabel}</span>
+                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider whitespace-nowrap">{f.socialLabel}</span>
                 <div className="flex gap-3">
                   {[
                     {

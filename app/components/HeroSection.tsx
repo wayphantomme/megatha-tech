@@ -9,52 +9,30 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-white px-6 pt-12 pb-10 md:pt-16 md:pb-14 lg:pt-20 lg:pb-16"
+      className="relative overflow-hidden bg-white px-5 pt-10 pb-8 md:pt-16 md:pb-14 lg:pt-20 lg:pb-16"
       aria-labelledby="hero-heading"
     >
-      {/* ── Decorative blobs ─────────────────────────────────────────────── */}
       <div
         aria-hidden="true"
-        style={{
-          position: "absolute", top: "-180px", left: "-160px",
-          width: "700px", height: "700px", borderRadius: "9999px",
-          filter: "blur(72px)", pointerEvents: "none",
-        }}
+        style={{ position: "absolute", top: "-180px", left: "-160px", width: "700px", height: "700px", borderRadius: "9999px", filter: "blur(72px)", pointerEvents: "none" }}
       />
       <div
         aria-hidden="true"
-        style={{
-          position: "absolute", top: "60px", right: "-120px",
-          width: "480px", height: "480px", borderRadius: "9999px",
-          background: "radial-gradient(circle, rgba(203,213,225,0.25) 0%, transparent 70%)",
-          filter: "blur(60px)", pointerEvents: "none",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute", bottom: "-40px", left: "35%",
-          width: "360px", height: "360px", borderRadius: "9999px",
-          background: "radial-gradient(circle, rgba(16,185,129,0.07) 0%, transparent 70%)",
-          filter: "blur(56px)", pointerEvents: "none",
-        }}
+        style={{ position: "absolute", top: "60px", right: "-120px", width: "480px", height: "480px", borderRadius: "9999px", background: "radial-gradient(circle, rgba(203,213,225,0.25) 0%, transparent 70%)", filter: "blur(60px)", pointerEvents: "none" }}
       />
 
       <div className="relative mx-auto max-w-4xl text-center">
-        {/* Eyebrow badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold text-slate-500 uppercase tracking-widest mb-8 shadow-sm">
-          <span
-            className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"
-            style={{ animation: "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite" }}
-            aria-hidden="true"
-          />
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-6 shadow-sm">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
           {h.badge}
         </div>
 
         {/* H1 */}
         <h1
           id="hero-heading"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] font-extrabold tracking-tight text-[#111111] leading-[1.15] md:leading-[1.1] mb-6 max-w-5xl mx-auto"
+          className="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.6rem] font-extrabold tracking-tight text-[#111111] leading-[1.15] mb-5 mx-auto"
           style={{ fontFamily: "var(--font-plus-jakarta), var(--font-inter), sans-serif" }}
         >
           {h.h1Part1}{" "}
@@ -62,35 +40,35 @@ export default function HeroSection() {
           {h.h1Part2}
         </h1>
 
-        {/* Sub-headline */}
-        <p className="mx-auto max-w-2xl text-base md:text-lg text-slate-500 leading-relaxed mb-10">
+        {/* Sub */}
+        <p className="mx-auto max-w-sm sm:max-w-xl text-sm sm:text-base md:text-lg text-slate-500 leading-relaxed mb-8">
           {h.sub}
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-10">
           <a
             id="hero-cta-primary"
             href="https://calendly.com/wayanphantomme/30min"
-            className="w-full sm:w-auto rounded-full bg-[#111111] px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-slate-800 hover:scale-[1.03] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111111]"
+            className="rounded-full bg-[#111111] px-7 py-3.5 text-sm font-semibold text-white text-center transition-all duration-300 hover:bg-slate-800 hover:scale-[1.03] hover:shadow-xl"
           >
             {h.ctaPrimary}
           </a>
           <a
             id="hero-cta-secondary"
             href="#services"
-            className="w-full sm:w-auto rounded-full border border-slate-200 bg-white px-8 py-4 text-base font-semibold text-[#111111] transition-all duration-300 hover:border-slate-400 hover:shadow-md hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
+            className="rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-[#111111] text-center transition-all duration-300 hover:border-slate-400 hover:shadow-md"
           >
             {h.ctaSecondary}
           </a>
         </div>
 
-        {/* Trust indicators */}
-        <div className="border-t border-slate-100 pt-10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
+        {/* Integration logos — single row, scrollable on mobile */}
+        <div className="border-t border-slate-100 pt-8">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-5">
             {h.integrateWith}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          <div className="flex items-center justify-center gap-5 sm:gap-8 flex-wrap">
             {[
               { label: "GitHub", slug: "github" },
               { label: "Vercel", slug: "vercel" },
@@ -100,37 +78,36 @@ export default function HeroSection() {
             ].map((logo) => (
               <div
                 key={logo.label}
-                className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-all duration-300 select-none grayscale hover:grayscale-0"
+                className="flex items-center gap-1.5 opacity-40 hover:opacity-80 transition-opacity duration-300 select-none"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`https://cdn.simpleicons.org/${logo.slug}/1e293b`}
                   alt=""
-                  width={18}
-                  height={18}
-                  className="w-4.5 h-4.5 object-contain"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
                   aria-hidden="true"
                 />
-                <span className="text-sm font-bold text-[#1e293b] tracking-tight">
-                  {logo.label}
-                </span>
+                <span className="text-xs font-bold text-[#1e293b] tracking-tight">{logo.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Stat pills */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        {/* Stats — 2x2 on mobile, single row on sm+ */}
+        <div className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3">
           {h.stats.map((item) => (
             <div
               key={item.label}
-              className="flex items-center gap-2 rounded-full border border-slate-100 bg-slate-50 px-5 py-2"
+              className="flex items-center justify-center gap-2 rounded-full border border-slate-100 bg-slate-50 px-4 py-2"
             >
               <span className="text-sm font-bold text-[#111111]">{item.stat}</span>
               <span className="text-xs text-slate-500">{item.label}</span>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
