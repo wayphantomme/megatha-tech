@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Providers from "./Providers";
+import OrganizationSchema from "./components/OrganizationSchema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,32 +18,60 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const BASE_URL = "https://megatha-tech.vercel.app";
+const GTM_ID = "GTM-TGVXDZRZ";
+const GA_ID = "G-G2DCXCXDCX";
+
 export const metadata: Metadata = {
-  title: "Megatha Tech — Premium Software House for High-Growth Startups",
+  metadataBase: new URL(BASE_URL),
+  title: "Megatha Tech — Software House Bali, Indonesia",
   description:
-    "We build production-ready web applications, Web3 infrastructure, and AI automation workflows for high-growth startups and enterprises. Book a discovery call today.",
+    "Jasa pembuatan web app, sistem otomasi, dan platform digital. Tepat waktu, harga transparan, dari nol sampai live. Berbasis di Bali, melayani seluruh Indonesia dan mancanegara.",
   keywords: [
-    "software house",
-    "web development",
-    "Next.js",
-    "Web3",
-    "AI agents",
-    "blockchain",
-    "startup engineering",
+    "software house bali",
+    "jasa pembuatan website",
+    "jasa web app",
+    "sistem otomasi bisnis",
+    "AI automation",
+    "web development indonesia",
+    "software house indonesia",
+    "megatha tech",
   ],
+  authors: [{ name: "Megatha Tech", url: BASE_URL }],
+  creator: "Megatha Tech",
   verification: {
     google: "NLaB6g1bAhwifsuvLJEXay6w568aZtoi5WiDPEk7KmA",
   },
   openGraph: {
-    title: "Megatha Tech — Premium Software House",
+    title: "Megatha Tech — Software House Bali, Indonesia",
     description:
-      "Engineering premium web applications, decentralized infrastructure, and AI-driven automation workflows with high-velocity deployment.",
+      "Jasa pembuatan web app, sistem otomasi, dan platform digital. Tepat waktu, harga transparan, dari nol sampai live.",
+    url: BASE_URL,
+    siteName: "Megatha Tech",
+    locale: "id_ID",
+    alternateLocale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Megatha Tech — Software House Bali",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Megatha Tech — Software House Bali",
+    description:
+      "Jasa pembuatan web app, sistem otomasi, dan platform digital. Tepat waktu, harga transparan.",
+    images: ["/og-image.png"],
+    site: "@megathatech",
+  },
+  alternates: {
+    canonical: BASE_URL,
   },
 };
-
-const GTM_ID = "GTM-TGVXDZRZ";
-const GA_ID = "G-G2DCXCXDCX";
 
 export default function RootLayout({
   children,
@@ -96,6 +125,7 @@ gtag('config', '${GA_ID}');`,
         </noscript>
 
         <Providers>
+          <OrganizationSchema />
           {children}
           <FloatingWhatsApp />
         </Providers>
