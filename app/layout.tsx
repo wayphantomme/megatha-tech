@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     "blockchain",
     "startup engineering",
   ],
+  verification: {
+    google: "NLaB6g1bAhwifsuvLJEXay6w568aZtoi5WiDPEk7KmA",
+  },
   openGraph: {
     title: "Megatha Tech — Premium Software House",
     description:
