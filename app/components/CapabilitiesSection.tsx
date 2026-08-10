@@ -7,7 +7,6 @@ const services = [
     id: "web-dev",
     gradient: "from-slate-900 via-slate-800 to-slate-700",
     accentColor: "bg-blue-400",
-    tags: ["Tampilan Web & Mobile", "Koneksi Database", "API & Integrasi", "Deployment", "Maintenance"],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
         <rect x="4" y="10" width="56" height="38" rx="4" stroke="white" strokeWidth="2.5" strokeOpacity="0.9"/>
@@ -28,7 +27,6 @@ const services = [
     id: "ai-automation",
     gradient: "from-violet-900 via-violet-800 to-indigo-700",
     accentColor: "bg-violet-300",
-    tags: ["Otomasi Proses Bisnis", "AI Chatbot & Assistant", "Integrasi WhatsApp", "Laporan Otomatis", "Notifikasi Pintar"],
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
         <circle cx="32" cy="32" r="7" fill="white" fillOpacity="0.95"/>
@@ -54,25 +52,29 @@ const services = [
 ];
 
 // Service copy lives here — bilingual handled via t.capabilities keys per service id
-const servicesCopy: Record<string, { id: { title: string; desc: string }; en: { title: string; desc: string } }> = {
+const servicesCopy: Record<string, { id: { title: string; desc: string; tags: string[] }; en: { title: string; desc: string; tags: string[] } }> = {
   "web-dev": {
     id: {
       title: "Pembuatan Aplikasi & Website",
       desc: "Kami bangun tampilan depan yang rapi, sistem di balik layar yang kuat, dan pastikan semuanya terhubung dan bisa diakses online. Dari desain sampai live — kami yang urus.",
+      tags: ["Tampilan Web & Mobile", "Sistem Backend", "Koneksi Database", "Integrasi API", "Deployment & Hosting", "Maintenance"],
     },
     en: {
       title: "App & Website Development",
       desc: "We build clean, fast interfaces connected to a solid backend — then deploy it so it's live and accessible. From design to launch, we handle it all.",
+      tags: ["Web & Mobile UI", "Backend System", "Database", "API Integration", "Deployment & Hosting", "Maintenance"],
     },
   },
   "ai-automation": {
     id: {
       title: "Otomasi & AI untuk Bisnis",
       desc: "Punya proses yang berulang dan makan waktu? Kami otomasi — mulai dari balas pesan otomatis, laporan harian, notifikasi, sampai integrasi antar aplikasi yang kamu pakai.",
+      tags: ["Otomasi Proses Bisnis", "AI Chatbot & Assistant", "Integrasi WhatsApp", "Laporan Otomatis", "Notifikasi Pintar"],
     },
     en: {
       title: "Business Automation & AI",
       desc: "Got repetitive tasks eating up your team's time? We automate them — from auto-replies and daily reports to notifications and connecting the apps you already use.",
+      tags: ["Business Process Automation", "AI Chatbot & Assistant", "WhatsApp Integration", "Auto Reports", "Smart Notifications"],
     },
   },
 };
@@ -139,7 +141,7 @@ export default function CapabilitiesSection() {
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-5">
-                    {service.tags.map((tag) => (
+                    {copy.tags.map((tag) => (
                       <span
                         key={tag}
                         className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-500"
